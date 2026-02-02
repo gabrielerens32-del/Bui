@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine 💖</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  text-align: center;
+  overflow: hidden;
+}
+
+.container {
+  padding: 20px;
+}
+
+h1 {
+  color: #fff;
+  font-size: 28px;
+  margin-top: 30px;
+}
+
+.photos {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.photos img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 3px solid white;
+}
+
+button {
+  border: none;
+  padding: 12px 22px;
+  font-size: 18px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#no {
+  background: #555;
+  color: white;
+}
+
+#yes {
+  background: #ff2e63;
+  color: white;
+  transition: transform 0.3s;
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 20px;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="page">
+  <h1>Will you be my Valentine? 💘</h1>
+
+  <div class="photos">
+    <!-- Replace these image links with your own -->
+    <img src="https://i.imgur.com/8Km9tLL.jpg">
+    <img src="https://i.imgur.com/J5LVHEL.jpg">
+  </div>
+
+  <button id="no" onclick="noClicked()">No</button>
+  <button id="yes" onclick="yesClicked()">Yes 💖</button>
+</div>
+
+<script>
+let scale = 1;
+
+function noClicked() {
+  alert("Are you sure? 😏💔");
+  scale += 0.4;
+  document.getElementById("yes").style.transform = "scale(" + scale + ")";
+}
+
+function yesClicked() {
+  document.getElementById("page").innerHTML = `
+    <h1>YAYYY!! 💕🥰</h1>
+    <p style="color:white;font-size:20px;">
+      I knew you'd say YES 💘<br>
+      Happy Valentine’s Day ❤️
+    </p>
+  `;
+}
+
+// hearts animation
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}, 400);
+</script>
+
+</body>
+</html>
